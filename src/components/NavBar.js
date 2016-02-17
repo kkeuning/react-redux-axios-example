@@ -19,6 +19,7 @@ class NavBar extends Component{
 					<div id='navbar'>
 						<ul className='nav navbar-nav'>
 							<li><Link to='/countries'>Countries</Link></li>
+							<li><Link to='/bottles'>Bottles</Link></li>
 							<li><Link to='/othercountry'>Other Country</Link></li>
 						</ul>
 					</div>

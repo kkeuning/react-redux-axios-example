@@ -11,6 +11,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import configureStore from './store';
 import App from './containers/App';
 import Countries from './components/Countries';
+import Bottles from './components/Bottles';
 import Error from './components/Error';
 import ExpectedError from './components/ExpectedError';
 import Home from './components/Home';
@@ -23,6 +24,9 @@ function loadData() {
 	store.dispatch(fetchData('https://restcountries.eu/rest/v1/all'));
 };
 
+function loadBottleData() {
+	store.dispatch(fetchData('http://cellar.goa.design/cellar/accounts/1/bottles'));
+};
 //we expect this to fail and get forwarded to the error page
 function loadBadData(){
 	store.dispatch(fetchData('https://restcountries.eu/rest/v1/callingcode/123123'));
@@ -35,6 +39,7 @@ ReactDOM.render(
 				<Route component={App}>
 					<Route path='/' component={Home} />
 					<Route path='/countries' component={Countries} onEnter={loadData} />
+					<Route path='/bottles' component={Bottles} onEnter={loadBottleData} />
 					<Route path='/othercountry' component={ExpectedError} onEnter={loadBadData} />
 					<Route path='/error' component={Error} />
 				</Route>

@@ -30,6 +30,7 @@ export function fetchData(url) {
 			responseType: 'json'
 		})
 			.then(function(response) {
+				console.log(response.data)
 				dispatch(receiveData(response.data));
 			})
 			.catch(function(response){
